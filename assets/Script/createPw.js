@@ -13,25 +13,50 @@ cc.Class({
 
     properties: {
         tooltip: cc.Label,
+        noti: cc.RichText,
+        btnSigUp: cc.Button
     },
 
     onLoad(){
         this.tooltip.node.active = false;
-    },
+        // this.noti.node.active = false;
+        this.btnSignUp.interactable = false;
 
+    },
+    
     editbegan(){
-        if(this.node.getComponent(cc.EditBox).string.length == 0){
-            this.tooltip.string = "Password must have at least one UPPERCASE and one NUMBER"
+        // if(this.node.getComponent(cc.EditBox).string.length == 0){
+            // this.tooltip.string = "Input PASSWORD here"
+            // this.tooltip.node.active = true;
+            // }
+        },
+        
+    ruleCheck(){
+        // cc.log(this.node.getComponent(cc.EditBox).string)
+        // this.compare.push(this.node.getComponent(cc.EditBox).string)
+        if(this.node.getComponent(cc.EditBox).string.match(/[0-9]/gm) && this.node.getComponent(cc.EditBox).string.match(/[A-Z]/gm)){
+            this.tooltip.node.active = false;
+            this.btnSignUp.interactable = true;
+
+        } else {
             this.tooltip.node.active = true;
+            this.tooltip.string = "Passwords must contain at least one uppercase letters and one numbers."
         }
     },
 
-    ruleCheck(){
-        if(this.node.getComponent(cc.EditBox).string.match(/[0-9]/gm) && this.node.getComponent(cc.EditBox).string.match(/[A-Z]/gm)){
-            this.tooltip.string = "Correct"
-        } else {
-            this.tooltip.string = "Wrong"
-        }
+    sigUpBtn () {
+        this.tooltip.node.active = false;
+        this.noti.node.active = true;
     }
+        
+        // comparePw(){
+        //     this.compare.push(this.node.getComponent(cc.EditBox).string);
+        //     cc.log(this.node.getComponent(cc.EditBox).string)
+            // if(compare[0] == compare[1]){
+                //     this.tooltip.node.active = true;
+                //     this.tooltip.string = 'a'
+                // }
+            // },
+            
    
 });
