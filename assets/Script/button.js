@@ -53,6 +53,7 @@ cc.Class({
         this.btnJump.interactable = false;
         this.btnReset.interactable = false;
         this.btnLeft.interactable = false;
+        cc.log(this.btnJump.interactable)
     },
 
     moveLeft() {

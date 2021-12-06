@@ -14,14 +14,14 @@ cc.Class({
     properties: {
         tooltip: cc.Label,
         noti: cc.RichText,
-        btnSigUp: cc.Button
+        btnSignUp: cc.Button,
     },
 
     onLoad(){
         this.tooltip.node.active = false;
-        // this.noti.node.active = false;
-        this.btnSignUp.interactable = false;
-
+        this.noti.node.active = false;
+        // this.btnSignUp.interactable = false;
+        cc.log(this.btnSignUp.interactable)
     },
     
     editbegan(){
@@ -36,8 +36,8 @@ cc.Class({
         // this.compare.push(this.node.getComponent(cc.EditBox).string)
         if(this.node.getComponent(cc.EditBox).string.match(/[0-9]/gm) && this.node.getComponent(cc.EditBox).string.match(/[A-Z]/gm)){
             this.tooltip.node.active = false;
+            cc.log('run');
             this.btnSignUp.interactable = true;
-
         } else {
             this.tooltip.node.active = true;
             this.tooltip.string = "Passwords must contain at least one uppercase letters and one numbers."
@@ -45,18 +45,8 @@ cc.Class({
     },
 
     sigUpBtn () {
-        this.tooltip.node.active = false;
         this.noti.node.active = true;
-    }
-        
-        // comparePw(){
-        //     this.compare.push(this.node.getComponent(cc.EditBox).string);
-        //     cc.log(this.node.getComponent(cc.EditBox).string)
-            // if(compare[0] == compare[1]){
-                //     this.tooltip.node.active = true;
-                //     this.tooltip.string = 'a'
-                // }
-            // },
-            
-   
+        // this.tooltip.node.active = true;
+
+    },
 });
